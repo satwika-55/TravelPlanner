@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner.jsx";
 import { AI_PROMT,selectBudgetOption, SelectTravelList } from "@/constants/options";
 // import { toast } from "@/hooks/use-toast";
-// import { chatSession } from "@/service/AImodal";
+import { chatSession } from "@/service/AImodal";
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -16,8 +16,8 @@ import {
 import { LogIn } from "lucide-react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-// import { doc, setDoc } from "firebase/firestore";
-// import { db } from "@/service/firebaseconfig";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/service/firebaseconfig";
 import { useNavigate } from "react-router-dom";
 
 const CreateTrip = () => {
@@ -51,16 +51,19 @@ const CreateTrip = () => {
       setOpendailog(true);
       return;
     }
+    else{
+      console.log("user", user);
+    }
     if (
       formdata?.days > 15 &&
       formdata?.location ||
       !formdata?.budget ||
       !formdata.traveler
     ) {
-      toast("Please fill all details");
-      return;
+      // toast("Please fill all details");
+      // return;
     }
-    // setLoading(true);
+    setLoading(true);
     const FINAL_PROMT = AI_PROMT
       .replace("{location}", formdata?.location)
       .replace("{days}", formdata?.days)
@@ -69,23 +72,23 @@ const CreateTrip = () => {
 
     const result = await chatSession.sendMessage(FINAL_PROMT);
     console.log(result?.response?.text());
-    // setLoading(false);
-    // Saveaitrip(result?.response?.text());
+    setLoading(false);
+    Saveaitrip(result?.response?.text());
   };
 
-  // const Saveaitrip = async (tripdata) => {
-  //   setLoading(true);
-  //   const user = JSON.parse(localStorage.getItem("user"));
-  //   const docid = Date.now().toString();
-  //   await setDoc(doc(db, "cities", docid), {
-  //     userselection: formdata,
-  //     tripdata: JSON.parse(tripdata),
-  //     userEmail: user?.email,
-  //     id: docid,
-  //   });
-  //   setLoading(false);
-  //   navigate('/view-trip/' + docid);
-  // };
+  const Saveaitrip = async (tripdata) => {
+    setLoading(true);
+    const user = JSON.parse(localStorage.getItem("user"));
+    const docid = Date.now().toString();
+    await setDoc(doc(db, "travel-plan", docid), {
+      userselection: formdata,
+      tripdata: JSON.parse(tripdata),
+      userEmail: user?.email,
+      id: docid,
+    });
+    setLoading(false);
+    navigate('/view-trip/'+docid);
+  };
 
   const GetuserProfile = (tokeninfo) => {
     axios
@@ -256,7 +259,7 @@ const CreateTrip = () => {
                   <LogIn className="mr-5" />
                 )}
                 Continue with Google
-                Continue with Google
+                {/* Continue with Google */}
               </Button>
             </DialogDescription>
           </DialogHeader>
@@ -268,3 +271,5 @@ const CreateTrip = () => {
 };
 
 export default CreateTrip;
+
+
