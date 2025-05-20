@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
 
 // Replace with your Pexels API key
-const PEXELS_API_KEY = "jkTXzyWcuD4lFMtj9wYgziiIVEEN6RrAwraovKartb2c795k0BNgdJxl"; // Replace with your Pexels API Key
+const PEXELS_API_KEY = "f2UUAqYDEleuPKsCtxeGT5dLw7HIM7XxrDELIGBGxpvkNwii4XescWeh"; // Replace with your Pexels API Key
 
 const PlacetoVists = ({ trip }) => {
   const [placeImages, setPlaceImages] = useState({}); // To store images for each place

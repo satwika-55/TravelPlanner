@@ -1,20 +1,50 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { Button } from '../ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { googleLogout } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google'
+import { useGoogleLogin } from "@react-oauth/google";;
 import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  // const user = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
   
   useEffect(() => {
     console.log(user);
   }, [user]);
+
+  const logini = useGoogleLogin({
+    onSuccess: (codeResp) => GetuserProfile(codeResp),
+    onError: (error) => console.log(error),
+    redirectUri: "http://localhost:5173",
+  });
+
+  const GetuserProfile = async (tokeninfo) => {
+  try {
+    const resp = await axios.get(
+      `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokeninfo?.access_token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${tokeninfo?.access_token}`,
+          Accept: "application/json",
+        },
+      }
+    );
+    localStorage.setItem("user", JSON.stringify(resp.data));
+    setUser(resp.data); // ✅ updates UI immediately
+    // setOpendailog(false); // comment this if undefined
+  } catch (err) {
+    console.log("Profile fetch error:", err);
+  }};
+
 
   return (
     <div className="p-3 shadow-sm flex justify-between items-center px-5">
@@ -34,17 +64,19 @@ const Header = () => {
             />
             </PopoverTrigger>
             <PopoverContent>
-              <h2 className='cursur-pointer' onClick={()=>{
+              <h2 className='cursur-pointer' onClick={() => {
                 googleLogout();
                 localStorage.clear();
-                window.location.reload();
-              }}>Logout</h2>
+                setUser(null); // ✅ clear the user state
+                }}>
+
+              Logout</h2>
             </PopoverContent>
             </Popover>
 
           </div>
         ) : (
-          <Button>Get started</Button>
+          <Button onClick={logini}>Get Started</Button>
         )}
       </div>
     </div>
