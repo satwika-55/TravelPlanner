@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Replace with your Pexels API key
-const PEXELS_API_KEY = "jkTXzyWcuD4lFMtj9wYgziiIVEEN6RrAwraovKartb2c795k0BNgdJxl";
+const PEXELS_API_KEY = "f2UUAqYDEleuPKsCtxeGT5dLw7HIM7XxrDELIGBGxpvkNwii4XescWeh";
 
 const Hotels = ({ trip }) => {
   const [hotelImages, setHotelImages] = useState({}); // State to store fetched hotel images

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
 
 // Replace with your Pexels API key
-const PEXELS_API_KEY = "jkTXzyWcuD4lFMtj9wYgziiIVEEN6RrAwraovKartb2c795k0BNgdJxl";
+const PEXELS_API_KEY = "f2UUAqYDEleuPKsCtxeGT5dLw7HIM7XxrDELIGBGxpvkNwii4XescWeh";
 
 const Information = ({ trip }) => {
   const [destinationImage, setDestinationImage] = useState(
@@ -39,7 +39,7 @@ const Information = ({ trip }) => {
   return (
     <div>
       <img
-        className="h-[350px] w-full object-cover rounded-xl"
+        className="h-[400px] w-full object-cover rounded-xl"
         src={destinationImage}
         alt={trip?.userselection?.location || "Trip destination"}
       />

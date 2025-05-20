@@ -51,4 +51,4 @@ export const SelectTravelList = [
   ];
   
 
-  export const AI_PROMT='Generate Travel Plan for Location : {location}, for {days} Days for {traveler} with a {budget} budget , Give me a Hotels options list with\nHotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, Place\nDetails, Place Image Url, Geo Coordinates, ticket Pricing, rating, Time travel each of the location for 3 days with each day plan with\nbest time to visit in JSON format,'
+  export const AI_PROMT='Generate Travel Plan for Location : {location}, for {days} Days for {traveler} with a {budget} budget , Give me a Hotels options list with\nHotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, Place\nDetails, Place Image Url, Geo Coordinates, ticket Pricing, rating, Time travel each of the location for {days} days with each day plan with\nbest time to visit in JSON format,'
