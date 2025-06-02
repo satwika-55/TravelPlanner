@@ -10,6 +10,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { View } from 'lucide-react'
 import Viewtrip from './view-trip/[tripId]/index.jsx'
 import Mytrip from './my-trips/index.jsx'
+import RegisterLogin from './registerLogin.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <Header />
+      <RegisterLogin />
       <Toaster />
       <RouterProvider router={router} />
     </GoogleOAuthProvider>
