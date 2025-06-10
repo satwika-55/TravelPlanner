@@ -35,7 +35,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <Header />
-      <RegisterLogin />
+      {/* <RegisterLogin /> */}
       <Toaster />
       <RouterProvider router={router} />
     </GoogleOAuthProvider>
