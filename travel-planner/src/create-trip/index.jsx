@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner.jsx";
 import { AI_PROMT,selectBudgetOption, SelectTravelList } from "@/constants/options";
-// import { toast } from "@/hooks/use-toast";
+// import { Toaster } from "@/hooks/use-toast";
 import { chatSession } from "@/service/AImodal";
 import React, { useEffect, useState } from "react";
 import {
@@ -56,11 +56,11 @@ const CreateTrip = () => {
     }
     if (
       formdata?.days > 15 &&
-      formdata?.location ||
+      !formdata?.location ||
       !formdata?.budget ||
       !formdata.traveler
     ) {
-      // toast("Please fill all details");
+      toast("Please fill all details");
       // return;
     }
     setLoading(true);
@@ -107,7 +107,7 @@ const CreateTrip = () => {
   };
 
   const fetchSuggestions = async (query) => {
-    if (query.length < 3) return;
+    if (query.length < 1) return;
     setLoading(true);
 
     try {
@@ -178,6 +178,7 @@ const CreateTrip = () => {
             </ul>
           )}
         </div>
+
         <div>
           <h2 className="text-xl my-3 font-medium">
             How many days are you planning your trip?
@@ -188,6 +189,7 @@ const CreateTrip = () => {
             onChange={(e) => handleInputChange("days", e.target.value)}
           />
         </div>
+
         <div>
           <h2 className="text-xl my-3 font-medium">What is your Budget?</h2>
           <div className="grid grid-cols-3 gap-5 mt-5">
@@ -206,6 +208,7 @@ const CreateTrip = () => {
             ))}
           </div>
         </div>
+
         <div>
           <h2 className="text-xl my-3 font-medium">
             Who do you plan on traveling with on your next adventure?
@@ -226,6 +229,7 @@ const CreateTrip = () => {
             ))}
           </div>
         </div>
+
       </div>
       
       <div className="mt-10 justify-end flex">
