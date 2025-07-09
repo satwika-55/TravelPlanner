@@ -1,40 +1,69 @@
-import { GetPlaceDetails, PHOTO_REF_URL } from '@/service/GlobalApi';
-import React, { useEffect, useState } from 'react'
+import { Button } from "@/components/ui/button";
+import React, { useState, useEffect } from "react";
 
+// Replace with your Pexels API key
+const PEXELS_API_KEY = "f2UUAqYDEleuPKsCtxeGT5dLw7HIM7XxrDELIGBGxpvkNwii4XescWeh";
 
+const Information = ({ trip }) => {
+  const [destinationImage, setDestinationImage] = useState(
+    "https://t4.ftcdn.net/jpg/00/65/48/25/240_F_65482539_C0ZozE5gUjCafz7Xq98WB4dW6LAhqKfs.jpg" // Fallback image
+  );
 
-function InfoSection({trip}) {
-  const [photoUrl,setPhotoUrl] = useState();
-  useEffect(()=>{
-    trip&&GetPlaceImg();
-  },[trip])
+  // Function to fetch an image based on location dynamically
+  const fetchDestinationImage = async (location) => {
+    try {
+      const response = await fetch(
+        `https://api.pexels.com/v1/search?query=${location}&per_page=1`,
+        {
+          headers: {
+            Authorization: PEXELS_API_KEY, // Pass your API key
+          },
+        }
+      );
+      const data = await response.json();
 
-  const GetPlaceImg=async()=>{
-    const data={
-      textQuery:trip?.userSelection?.location
+      if (data?.photos?.length > 0) {
+        setDestinationImage(data.photos[0].src.large); // Update state with the fetched image
+      }
+    } catch (error) {
+      console.error("Error fetching destination image:", error);
     }
-    const result= await GetPlaceDetails(data).then(resp=>{
-      // console.log(resp.data.places[0].photos[3].name)
-      const PhotoUrl=PHOTO_REF_URL.replace('{NAME}',resp.data.places[0].photos[3].name)
-      setPhotoUrl(PhotoUrl);
-     
-    })
-  }
+  };
+
+  useEffect(() => {
+    if (trip?.userselection?.location) {
+      fetchDestinationImage(trip.userselection.location);
+    }
+  }, [trip?.userselection?.location]);
+
   return (
     <div>
-      <img src={photoUrl ? photoUrl : '/public/road-trip-vacation.jpg'}  className='h-[330px] w-full object-cover rounded-xl'/>
-       <div className='flex justify-between items-center'>
-            <div className='my-6 flex flex-col gap-2'>
-                <h2 className='font-bold text-2xl'>{trip?.userSelection?.location}</h2>
-                <div className='flex gap-6 mt-4'>
-                    <h2 className='bg-gray-200 font-medium text-gray-600 rounded-full p-1 px-4 md:text-md'>🗓️ {trip?.userSelection?.totalDays} Day</h2>
-                    <h2 className='bg-gray-200 font-medium text-gray-600 rounded-full p-1 px-4 md:text-md'>👩‍👧‍👦 Number of Traveler : {trip?.userSelection?.traveler} People</h2>
-                    <h2 className='bg-gray-200 font-medium text-gray-600 rounded-full p-1 px-4 md:text-md'>💵 {trip?.userSelection?.budget} Budget </h2>
-                </div>
-            </div>
-       </div>
+      <img
+        className="h-[400px] w-full object-cover rounded-xl"
+        src={destinationImage}
+        alt={trip?.userselection?.location || "Trip destination"}
+      />
+      <div className="flex justify-between items-center">
+        <div className="my-5 flex flex-col gap-2">
+          <h2 className="font-bold text-2xl">
+            {trip?.userselection?.location || "Unknown Destination"}
+          </h2>
+          <div className="flex gap-5">
+            <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-xs md:text-md">
+              🗓️ {trip?.userselection?.days || 0} Days
+            </h2>
+            <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-xs md:text-md">
+              💰{trip?.userselection?.budget || "N/A"} Budget
+            </h2>
+            <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-xs md:text-md">
+              🥂 No. Of Travelers: {trip?.userselection?.traveler || 1}
+            </h2>
+          </div>
+        </div>
+        <Button>➤ Share</Button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default InfoSection
+export default Information;
