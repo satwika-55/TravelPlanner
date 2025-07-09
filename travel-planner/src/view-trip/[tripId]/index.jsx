@@ -3,10 +3,10 @@ import { doc, getDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import InfoSection from '../components/InfoSection.jsx';
-import Hotels from '../components/Hotels.jsx';
-import TripPlace from '../components/TripPlace.jsx';
-import Footer from '../components/Footer.jsx';
+import InfoSection from './components/InfoSection.jsx';
+import Hotels from './components/Hotels.jsx';
+import TripPlace from './components/TripPlace.jsx';
+import Footer from './components/Footer.jsx';
 
 
 
