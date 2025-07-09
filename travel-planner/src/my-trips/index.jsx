@@ -2,7 +2,7 @@ import { db } from '@/service/firebaseConfig';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
-import UserTripCard from './components/UserTripCard';
+import UserTripCard from './components/UserTripcard';
 
 function MyTrips() {
     const navigation=useNavigation();
@@ -17,7 +17,7 @@ function MyTrips() {
             return ;
         }
         setUserTrips([]); // Fetch işlemi başlamadan önce boş bir dizi olarak ayarla
-        const q=query(collection(db,'AiTrips'),where('userEmail','==',user?.email))
+        const q=query(collection(db,'travel-plan'),where('userEmail','==',user?.email))
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
