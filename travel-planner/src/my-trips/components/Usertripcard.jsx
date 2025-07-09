@@ -1,34 +1,15 @@
-import { GetPlaceDetails, PHOTO_REF_URL } from '@/service/GlobalApi';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-function UserTripCard({trip}) {
-  const [photoUrl,setPhotoUrl] = useState();
-
-  useEffect(()=>{
-    trip&&GetPlaceImg();
-  },[trip])
-
-  const GetPlaceImg=async()=>{
-    const data={
-      textQuery:trip?.userSelection?.location
-    }
-    const result= await GetPlaceDetails(data).then(resp=>{
-      const PhotoUrl=PHOTO_REF_URL.replace('{NAME}',resp.data.places[0].photos[3].name)
-      setPhotoUrl(PhotoUrl);
-    })
-  }
+const Usertripcard = ({trip}) => {
   return (
-   <Link to={'/view-trip/'+trip?.id}>
-    <div className='hover:scale-105 transition-all hover:shadow-sm'>
-     <img src={photoUrl}  className='rounded-xl h-[200px] w-full object-cover'/>
-      <div>
-      <h2 className='font-medium text-lg'>{trip?.userSelection?.location}</h2>
-      <h2 className="text-sm text-gray-600" >{trip?.userSelection?.totalDays} Days trip with {trip?.userSelection?.budget} </h2>
-      </div>
+    <div className='hover:scale-105 transition-all'>
+        <img src="https://media.gettyimages.com/id/1445528561/photo/aerial-view-of-man-and-woman-raising-holding-arms-in-mountains-in-norway.jpg?s=612x612&w=0&k=20&c=VDSc8ZcP8xHK-3KnjlKZ2x6SbtnRAwEM92p7jMjqGH4=" alt="" className='object-cover rounded-xl'/>
+        <div>
+            <h2 className='font-bold text-lg'>{trip?.userselection?.location}</h2>
+            <h2 className='text-sm text-gray-500'>{trip?.userselection?.days}Days trip with {trip?.userselection?.budget} Budget</h2>
+        </div>
     </div>
-   </Link>
   )
 }
 
-export default UserTripCard
+export default Usertripcard
