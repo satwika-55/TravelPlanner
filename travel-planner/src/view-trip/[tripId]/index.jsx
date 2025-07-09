@@ -1,42 +1,41 @@
-import { db } from '@/service/firebaseconfig';
+import { db } from '@/service/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Information from './components/InfoSection.jsx';
-import Hotels from './components/Hotels.jsx';
-import PlacetoVists from './components/PlacetoVisits';
+import { toast } from 'sonner';
+import InfoSection from '../components/InfoSection.jsx';
+import Hotels from '../components/Hotels.jsx';
+import TripPlace from '../components/TripPlace.jsx';
+import Footer from '../components/Footer.jsx';
 
-const Viewtrip = () => {
-  const { tripId } = useParams();
-  const [trip,setTrip]= useState([]);
-  useEffect(() => {
-    if (tripId) {
-      getTripData();
+
+
+function ViewTrip() {
+    const {tripId} = useParams();
+    const [trip,setTrip] = useState();
+    const GetTripData=async()=>{
+        const docRef = doc(db, "AiTrips", tripId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            setTrip(docSnap.data());
+          } else {
+            console.log("No such document!");
+            toast('No trip found!')
+          }
     }
-  }, [tripId]);
-
-  const getTripData = async () => {
-    try {
-      const docRef = doc(db, 'travel-plan', tripId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setTrip(docSnap.data())
-      } else {
-        console.log("No such document");
-      }
-    } catch (error) {
-      console.error("Error fetching document:", error);
-    }
-  };
-
+    useEffect(()=>{
+        tripId&&GetTripData();
+    },[tripId])
+    // Get Trip Info DAta from Firebase
   return (
-    <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
-        <Information trip={trip}/>
+    <div className='p-12 md:px-25 lg:px-44 xl:px:56'>
+        <InfoSection trip={trip}/>
         <Hotels trip={trip}/>
-        <PlacetoVists trip={trip}/>
+        <TripPlace trip={trip}/>
+        <Footer trip={trip}/>
     </div>
-  );
-};
+  )
+}
 
-export default Viewtrip;
+export default ViewTrip
