@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner.jsx";
 import { AI_PROMT,selectBudgetOption, SelectTravelList } from "@/constants/options";
-// import { Toaster } from "@/hooks/use-toast";
+import { Toaster } from "@/hooks/use-toast";
 import { chatSession } from "@/service/AImodal";
 import React, { useEffect, useState } from "react";
 import {
@@ -61,7 +61,7 @@ const CreateTrip = () => {
       !formdata.traveler
     ) {
       toast("Please fill all details");
-      // return;
+      return;
     }
     setLoading(true);
     const FINAL_PROMT = AI_PROMT
