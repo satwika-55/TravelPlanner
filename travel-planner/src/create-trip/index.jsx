@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner.jsx";
 import { AI_PROMT,selectBudgetOption, SelectTravelList } from "@/constants/options";
-import { Toaster } from "@/hooks/use-toast";
+import { Toaster } from './components/ui/sonner.jsx'
 import { chatSession } from "@/service/AImodal";
 import React, { useEffect, useState } from "react";
 import {
@@ -71,7 +71,7 @@ const CreateTrip = () => {
       .replace("{budget}", formdata?.budget);
 
     const result = await chatSession.sendMessage(FINAL_PROMT);
-    console.log(result?.response?.text());
+    // console.log(result?.response?.text());
     setLoading(false);
     Saveaitrip(result?.response?.text());
   };
