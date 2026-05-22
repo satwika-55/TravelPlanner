@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import React, { useState, useEffect } from "react";
 
 // Replace with your Pexels API key

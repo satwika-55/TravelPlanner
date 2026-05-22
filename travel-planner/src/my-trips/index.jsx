@@ -1,9 +1,8 @@
-import { db } from '@/service/firebaseConfig';
+import { db } from '../service/firebaseConfig';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
-import UserTripCard from '@/my-trips/components/UserTripCard';
-
+import UserTripCard from './components/UserTripCard';
 
 
 function MyTrips() {

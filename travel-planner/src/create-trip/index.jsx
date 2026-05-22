@@ -1,23 +1,21 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Toaster } from "@/components/ui/sonner.jsx";
-import { AI_PROMT,selectBudgetOption, SelectTravelList } from "@/constants/options";
-import { Toaster } from './components/ui/sonner.jsx'
-import { chatSession } from "@/service/AImodal";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+// import { Toaster } from "@/components/ui/sonner.jsx";
+import { AI_PROMT,selectBudgetOption, SelectTravelList } from "../constants/options";
+import { Toaster } from '../components/ui/sonner.jsx'
+import { chatSession } from "../service/AImodal";
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+} from "../components/ui/dialog";
 import { LogIn } from "lucide-react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/service/firebaseconfig";
+import { db } from "../service/firebaseconfig";
 import { useNavigate } from "react-router-dom";
 
 const CreateTrip = () => {
@@ -269,7 +267,6 @@ const CreateTrip = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog> 
-      <Toaster />
     </div>
   );
 };
