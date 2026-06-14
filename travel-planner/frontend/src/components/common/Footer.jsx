@@ -35,21 +35,21 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Explore Links */}
+        {/* Quick Links */}
         <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Explore</h4>
+          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Quick Links</h4>
           <ul className="space-y-3 text-sm">
-            <li>
-              <Link to="/explore" className="hover:text-amber-400 transition-all">Destinations</Link>
-            </li>
             <li>
               <Link to="/community" className="hover:text-amber-400 transition-all">Community Feed</Link>
             </li>
             <li>
-              <Link to="/my-trips" className="hover:text-amber-400 transition-all">AI Trip Planner</Link>
+              <Link to="/my-trips" className="hover:text-amber-400 transition-all">My Trips</Link>
             </li>
             <li>
               <Link to="/saved-trips" className="hover:text-amber-400 transition-all">Saved Itineraries</Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-amber-400 transition-all">About Us</Link>
             </li>
           </ul>
         </div>

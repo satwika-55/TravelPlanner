@@ -18,74 +18,121 @@ const carouselDestinations = [
     city: "Paris",
     country: "France",
     theme: "Romantic",
-    title: "Discover Paris Like Never Before",
-    subtitle: "The City of Light & Love",
+    headline: "DISCOVER",
+    destination: "PARIS",
+    tagline: "LIKE NEVER BEFORE",
     description: "Wander through historic cobblestone alleys, admire masterpiece art, enjoy café culture, and cruise along the Seine under the golden glow of the Eiffel Tower.",
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1920&q=80",
-    stats: { rating: "4.9", countries: "120+", trips: "50K+", destinations: "10K+" }
+    highlights: [
+      { icon: "❤️", text: "Romantic Capital" },
+      { icon: "🗼", text: "Eiffel Tower" },
+      { icon: "☕", text: "Hidden Cafés" }
+    ]
   },
   {
     city: "Lapland",
     country: "Finland",
     theme: "Snow & Northern Lights",
-    title: "Experience The Magic Of Finland",
-    subtitle: "Wonders of the Arctic Circle",
+    headline: "DISCOVER",
+    destination: "FINLAND",
+    tagline: "LIKE NEVER BEFORE",
     description: "Stay in luxury glass igloos beneath the dancing Aurora Borealis, embark on husky safaris through snow pine forests, and experience the pristine Finnish wilderness.",
-    image: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "❄️", text: "Best Season: Dec–Mar" },
+      { icon: "🌌", text: "Aurora Visibility: High" },
+      { icon: "🏔", text: "Arctic Adventures" }
+    ]
   },
   {
     city: "Kyoto",
     country: "Japan",
     theme: "Traditional & Scenic",
-    title: "Witness The Serenity Of Kyoto",
-    subtitle: "Legacy of Temples & Gardens",
+    headline: "EXPERIENCE",
+    destination: "KYOTO",
+    tagline: "THE MAGIC OF",
     description: "Walk through majestic towering bamboo groves, experience tea ceremonies in geisha districts, and admire golden pavilions reflecting on tranquil waters.",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🏯", text: "Ancient Temples" },
+      { icon: "🎋", text: "Bamboo Forests" },
+      { icon: "🍵", text: "Tea Ceremonies" }
+    ]
   },
   {
     city: "Switzerland",
     country: "Europe",
     theme: "Alpine Mountains",
-    title: "Explore Alpine Valleys",
-    subtitle: "Peak of Natural Splendor",
+    headline: "EXPLORE",
+    destination: "SWITZERLAND",
+    tagline: "THE ALPS",
     description: "Board scenic red trains climbing snow-capped peaks, cruise emerald alpine lakes, and stay in wooden chalets surrounded by wildflowers and ringing bells.",
-    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🏔️", text: "Majestic Peaks" },
+      { icon: "🚂", text: "Scenic Trains" },
+      { icon: "💎", text: "Crystal Lakes" }
+    ]
   },
   {
     city: "Dubai",
     country: "UAE",
     theme: "Luxury & Innovation",
-    title: "Indulge In The Grandeur Of Dubai",
-    subtitle: "Oasis of Modern Marvels",
+    headline: "INDULGE IN",
+    destination: "DUBAI",
+    tagline: "THE GRANDEUR",
     description: "Scale the sky-high Burj Khalifa, shop in futuristic mega-malls, cruise in private yachts, and race across golden desert dunes on a luxury sunset safari.",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🏙️", text: "Luxury Lifestyle" },
+      { icon: "🌴", text: "Desert Experiences" },
+      { icon: "✨", text: "Modern Wonders" }
+    ]
   },
   {
     city: "Bali",
     country: "Indonesia",
     theme: "Tropical Escape",
-    title: "Embrace The Healing Charm of Bali",
-    subtitle: "Island of Peace & Temples",
+    headline: "EMBRACE",
+    destination: "BALI",
+    tagline: "THE PARADISE",
     description: "Rejuvenate in jungle infinity pools overlooking tiered rice terraces, surf golden sandy beaches, and explore thousands of majestic cliffside stone shrines.",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🏝️", text: "Tropical Beaches" },
+      { icon: "🛕", text: "Sacred Temples" },
+      { icon: "🌾", text: "Rice Terraces" }
+    ]
   },
   {
     city: "Delhi",
     country: "India",
     theme: "Cultural & Historical",
-    title: "Experience Cultural Heritage",
-    subtitle: "Epicenter of Empires & Spices",
+    headline: "EXPERIENCE",
+    destination: "DELHI",
+    tagline: "CULTURAL HERITAGE",
     description: "Explore massive sandstone forts, wander old bazaar lanes aromatic with cardamoms, and marvel at marble domes honoring ancient Mughal legacies.",
-    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🏰", text: "Historic Forts" },
+      { icon: "🕌", text: "Mughal Architecture" },
+      { icon: "🎭", text: "Vibrant Culture" }
+    ]
   },
   {
     city: "Rio de Janeiro",
     country: "Brazil",
     theme: "Tropical & Rainforest",
-    title: "Embrace The Pulse Of Rio",
-    subtitle: "Where Mountain Meets Ocean",
+    headline: "EXPLORE",
+    destination: "BRAZIL",
+    tagline: "THE HEART OF",
     description: "Ride cable cars up Sugarloaf Mountain, feel the rhythms of samba along Copacabana Beach, and stand beneath the open arms of Christ the Redeemer.",
-    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1920&q=80"
+    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1920&q=80",
+    highlights: [
+      { icon: "🌿", text: "Rainforest Adventures" },
+      { icon: "🎭", text: "Vibrant Culture" },
+      { icon: "🏖️", text: "Tropical Beaches" }
+    ]
   }
 ];
 
@@ -445,27 +492,29 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12">
           
           {/* Left Side: Destination Info */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-3 inline-flex items-center gap-1.5 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 w-fit">
+          <div className="lg:col-span-8 flex flex-col justify-center text-left">
+            <span className="text-amber-500 font-bold tracking-[0.3em] text-xs uppercase mb-6 inline-flex items-center gap-2 bg-amber-500/10 px-4 py-2 rounded-full border border-amber-500/20 w-fit">
               <Sparkles className="h-3 w-3 animate-pulse" />
               {carouselDestinations[currentSlide].theme}
             </span>
 
-            {/* Title Slides */}
-            <div className="h-44 md:h-52 flex flex-col justify-end overflow-hidden mb-6">
+            {/* Massive Destination Headline */}
+            <div className="h-auto md:h-64 flex flex-col justify-end overflow-hidden mb-8">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
-                  initial={{ y: 60, opacity: 0 }}
+                  initial={{ y: 80, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -60, opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  exit={{ y: -80, opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                  <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent">
-                    {carouselDestinations[currentSlide].title.split(" ").slice(0, -2).join(" ")}
-                    <br />
-                    <span className="text-amber-400 font-black">
-                      {carouselDestinations[currentSlide].title.split(" ").slice(-2).join(" ")}
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-2">
+                    <span className="block text-white/90">{carouselDestinations[currentSlide].headline}</span>
+                    <span className="block bg-gradient-to-r from-amber-400 via-amber-500 to-rose-500 bg-clip-text text-transparent">
+                      {carouselDestinations[currentSlide].destination}
+                    </span>
+                    <span className="block text-4xl md:text-5xl lg:text-6xl font-bold text-white/70 mt-2">
+                      {carouselDestinations[currentSlide].tagline}
                     </span>
                   </h1>
                 </motion.div>
@@ -473,46 +522,60 @@ const LandingPage = () => {
             </div>
 
             {/* Description */}
-            <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl leading-relaxed">
+            <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl leading-relaxed font-light">
               {carouselDestinations[currentSlide].description}
             </p>
 
-            {/* Travel Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-white/10 max-w-xl">
+            {/* Destination Highlights */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              {carouselDestinations[currentSlide].highlights.map((highlight, idx) => (
+                <div key={idx} className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
+                  <span className="text-lg">{highlight.icon}</span>
+                  <span className="text-sm text-gray-300 font-medium">{highlight.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Travel Stats - Redesigned */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-8 border-t border-white/10 max-w-2xl">
               <div>
-                <h3 className="text-white font-extrabold text-2xl tracking-tight">⭐ 4.9</h3>
-                <p className="text-gray-400 text-xs mt-1 uppercase tracking-wider">Avg Rating</p>
+                <h3 className="text-white font-black text-4xl md:text-5xl tracking-tight">4.9</h3>
+                <p className="text-gray-400 text-xs mt-2 uppercase tracking-widest font-semibold">Average Rating</p>
               </div>
               <div>
-                <h3 className="text-white font-extrabold text-2xl tracking-tight">🌍 120+</h3>
-                <p className="text-gray-400 text-xs mt-1 uppercase tracking-wider">Countries</p>
+                <h3 className="text-white font-black text-4xl md:text-5xl tracking-tight">120+</h3>
+                <p className="text-gray-400 text-xs mt-2 uppercase tracking-widest font-semibold">Countries</p>
               </div>
               <div>
-                <h3 className="text-white font-extrabold text-2xl tracking-tight">✈️ 50k+</h3>
-                <p className="text-gray-400 text-xs mt-1 uppercase tracking-wider">Trips Planned</p>
+                <h3 className="text-white font-black text-4xl md:text-5xl tracking-tight">50K+</h3>
+                <p className="text-gray-400 text-xs mt-2 uppercase tracking-widest font-semibold">Trips Planned</p>
               </div>
               <div>
-                <h3 className="text-white font-extrabold text-2xl tracking-tight">🏨 10k+</h3>
-                <p className="text-gray-400 text-xs mt-1 uppercase tracking-wider">Destinations</p>
+                <h3 className="text-white font-black text-4xl md:text-5xl tracking-tight">10K+</h3>
+                <p className="text-gray-400 text-xs mt-2 uppercase tracking-widest font-semibold">Destinations</p>
               </div>
             </div>
           </div>
 
           {/* Right Side: Floating Glass Card AI Trip Generator */}
-          <div className="lg:col-span-5">
-            <div className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/50 relative overflow-hidden">
+          <div className="lg:col-span-4">
+            <div className="backdrop-blur-2xl bg-black/50 border border-white/10 rounded-3xl p-6 md:p-7 shadow-2xl shadow-black/80 relative overflow-hidden">
+              {/* Subtle border glow */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-amber-500/5 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 rounded-3xl border border-amber-500/10 pointer-events-none" />
+              
               {/* Blur backdrop glowing orb */}
-              <div className="absolute -top-12 -right-12 w-24 h-24 bg-amber-500/20 rounded-full blur-2xl" />
+              <div className="absolute -top-16 -right-16 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
 
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Compass className="text-amber-500 h-5 w-5" />
+              <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
+                <Compass className="text-amber-500 h-4.5 w-4.5" />
                 AI Trip Planner
               </h2>
 
               <div className="space-y-5">
                 {/* Destination Suggestion Input */}
                 <div className="relative">
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">
                     Destination
                   </label>
                   <div className="relative">
@@ -522,7 +585,7 @@ const LandingPage = () => {
                       placeholder="Type to search e.g. Paris..."
                       value={place}
                       onChange={handlePlaceChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all text-sm"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500/50 focus:bg-white/10 transition-all text-sm"
                     />
                   </div>
                   {suggestionsLoading && (
@@ -546,7 +609,7 @@ const LandingPage = () => {
 
                 {/* Duration Days */}
                 <div>
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">
                     Trip Duration (Days)
                   </label>
                   <div className="flex items-center gap-3">
@@ -556,14 +619,14 @@ const LandingPage = () => {
                       max="15"
                       value={days}
                       onChange={(e) => setDays(parseInt(e.target.value) || 1)}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-amber-500 transition-all text-sm"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 px-4 text-white focus:outline-none focus:border-amber-500/50 focus:bg-white/10 transition-all text-sm"
                     />
                   </div>
                 </div>
 
                 {/* Budget Selection (Interactive chips) */}
                 <div>
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">
                     Budget Options
                   </label>
                   <div className="grid grid-cols-3 gap-2">
@@ -572,14 +635,14 @@ const LandingPage = () => {
                         key={item.title}
                         type="button"
                         onClick={() => setBudget(item.title)}
-                        className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all ${
+                        className={`flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all ${
                           budget === item.title
-                            ? "bg-amber-500/20 border-amber-500 text-amber-400"
-                            : "bg-white/5 border-white/5 text-gray-400 hover:border-white/20"
+                            ? "bg-amber-500/20 border-amber-500/50 text-amber-400 shadow-lg shadow-amber-500/10"
+                            : "bg-white/5 border-white/5 text-gray-400 hover:border-white/20 hover:bg-white/10"
                         }`}
                       >
-                        <span className="text-xl mb-1">{item.icon}</span>
-                        <span className="text-[11px] font-bold">{item.title}</span>
+                        <span className="text-lg mb-0.5">{item.icon}</span>
+                        <span className="text-[10px] font-bold">{item.title}</span>
                       </button>
                     ))}
                   </div>
@@ -587,7 +650,7 @@ const LandingPage = () => {
 
                 {/* Travelers Options */}
                 <div>
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">
                     Who is traveling?
                   </label>
                   <div className="grid grid-cols-4 gap-1.5">
@@ -596,14 +659,14 @@ const LandingPage = () => {
                         key={item.title}
                         type="button"
                         onClick={() => setTraveler(item.title)}
-                        className={`flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all ${
+                        className={`flex flex-col items-center justify-center p-1.5 rounded-xl border text-center transition-all ${
                           traveler === item.title
-                            ? "bg-amber-500/20 border-amber-500 text-amber-400"
-                            : "bg-white/5 border-white/5 text-gray-400 hover:border-white/20"
+                            ? "bg-amber-500/20 border-amber-500/50 text-amber-400 shadow-lg shadow-amber-500/10"
+                            : "bg-white/5 border-white/5 text-gray-400 hover:border-white/20 hover:bg-white/10"
                         }`}
                       >
-                        <span className="text-base mb-0.5">{item.icon}</span>
-                        <span className="text-[9px] font-bold truncate w-full">{item.title}</span>
+                        <span className="text-sm mb-0.5">{item.icon}</span>
+                        <span className="text-[8px] font-bold truncate w-full">{item.title}</span>
                       </button>
                     ))}
                   </div>
@@ -611,13 +674,13 @@ const LandingPage = () => {
 
                 {/* Travel Style */}
                 <div>
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">
                     Travel Style
                   </label>
                   <select
                     value={travelStyle}
                     onChange={(e) => setTravelStyle(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-amber-500 transition-all text-sm appearance-none cursor-pointer"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 px-4 text-white focus:outline-none focus:border-amber-500/50 focus:bg-white/10 transition-all text-sm appearance-none cursor-pointer"
                   >
                     {travelStyles.map((style) => (
                       <option key={style} value={style} className="bg-neutral-900 text-white">
@@ -628,10 +691,10 @@ const LandingPage = () => {
                 </div>
 
                 {/* CTAs */}
-                <div className="pt-2 space-y-3">
+                <div className="pt-2 space-y-2.5">
                   <button
                     onClick={handleGenerateTrip}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-rose-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-rose-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Sparkles className="h-4 w-4" />
                     Generate My Trip
@@ -639,7 +702,7 @@ const LandingPage = () => {
 
                   <Link
                     to="/community"
-                    className="w-full py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Explore Community Trips
                   </Link>
@@ -653,13 +716,15 @@ const LandingPage = () => {
         {/* Carousel Slide Navigation Controls (manual arrows and dots) */}
         <div className="absolute bottom-8 left-6 right-6 z-10 flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
           {/* Dots Indicator */}
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             {carouselDestinations.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => selectSlide(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  currentSlide === idx ? "w-8 bg-amber-500" : "w-2.5 bg-white/30 hover:bg-white/60"
+                className={`h-2.5 rounded-full transition-all duration-500 ease-out ${
+                  currentSlide === idx 
+                    ? "w-10 bg-amber-500 shadow-lg shadow-amber-500/30" 
+                    : "w-2.5 bg-white/30 hover:bg-white/50 hover:w-4"
                 }`}
               />
             ))}
@@ -669,15 +734,15 @@ const LandingPage = () => {
           <div className="flex gap-3">
             <button
               onClick={handlePrevSlide}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white transition-all active:scale-90"
+              className="p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all active:scale-90 group"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
             </button>
             <button
               onClick={handleNextSlide}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white transition-all active:scale-90"
+              className="p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all active:scale-90 group"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
         </div>
@@ -690,9 +755,6 @@ const LandingPage = () => {
             <span className="text-amber-500 font-bold uppercase tracking-widest text-xs">Trending Now</span>
             <h2 className="text-3xl md:text-4xl font-extrabold mt-2 tracking-tight">Trending Destinations</h2>
           </div>
-          <Link to="/explore" className="text-sm font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1.5 transition-all">
-            See all places <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
 
         {/* Horizontal Scroll list */}
@@ -700,12 +762,12 @@ const LandingPage = () => {
           {trendingDestinations.map((dest, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -6 }}
-              className="min-w-[280px] md:min-w-[320px] bg-neutral-900/40 border border-neutral-800/60 rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all flex-shrink-0"
+              whileHover={{ y: -8 }}
+              className="min-w-[280px] md:min-w-[320px] bg-neutral-900/50 border border-neutral-800/60 rounded-2xl overflow-hidden hover:border-amber-500/40 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 flex-shrink-0"
             >
               <div className="h-48 overflow-hidden relative">
-                <img src={dest.image} alt={dest.name} className="w-full h-full object-cover transition-all duration-500 hover:scale-110" />
-                <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10 text-xs font-bold flex items-center gap-1">
+                <img src={dest.image} alt={dest.name} className="w-full h-full object-cover transition-all duration-700 hover:scale-110" />
+                <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-xs font-bold flex items-center gap-1.5">
                   <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
                   {dest.score}
                 </div>
@@ -727,7 +789,7 @@ const LandingPage = () => {
                   <span>Best Season: <b>{dest.season}</b></span>
                   <button
                     onClick={() => { setPlace(dest.name); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className="text-amber-500 hover:underline font-semibold"
+                    className="text-amber-500 hover:text-amber-400 font-semibold transition-colors"
                   >
                     Plan Trip
                   </button>
@@ -751,8 +813,8 @@ const LandingPage = () => {
             {travelCategories.map((cat, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.03, borderColor: "rgba(245, 158, 11, 0.3)" }}
-                className="bg-neutral-900 border border-neutral-800/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all active:scale-95"
+                whileHover={{ scale: 1.05, y: -4, borderColor: "rgba(245, 158, 11, 0.4)" }}
+                className="bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:bg-neutral-900/80 hover:shadow-lg hover:shadow-amber-500/5 active:scale-95"
                 onClick={() => { setTravelStyle(cat.title); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               >
                 <span className="text-4xl mb-4">{cat.emoji}</span>
@@ -779,10 +841,10 @@ const LandingPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {mockCommunityPreviews.map((trip, idx) => (
-            <div key={idx} className="bg-neutral-900/20 border border-neutral-800/60 rounded-3xl overflow-hidden hover:border-neutral-700 transition-all flex flex-col h-full">
+            <div key={idx} className="bg-neutral-900/30 border border-neutral-800/60 rounded-3xl overflow-hidden hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 flex flex-col h-full">
               <div className="h-56 relative overflow-hidden">
-                <img src={trip.image} alt={trip.title} className="w-full h-full object-cover" />
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold border border-white/10 flex items-center gap-1 text-white">
+                <img src={trip.image} alt={trip.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 flex items-center gap-1.5 text-white">
                   <Calendar className="h-3.5 w-3.5 text-amber-500" />
                   {trip.days} Days
                 </div>
@@ -794,7 +856,7 @@ const LandingPage = () => {
                     <span className="text-xs text-neutral-400 font-medium">{trip.creator.name}</span>
                     <span className="text-[10px] text-neutral-600">• {trip.date}</span>
                   </div>
-                  <h3 className="font-bold text-lg text-white mb-2 leading-snug line-clamp-2 hover:text-amber-400 transition-all">
+                  <h3 className="font-bold text-lg text-white mb-2 leading-snug line-clamp-2 hover:text-amber-400 transition-colors">
                     {trip.title}
                   </h3>
                   <p className="text-xs text-neutral-400 flex items-center gap-1 mb-4">
@@ -805,14 +867,14 @@ const LandingPage = () => {
 
                 <div className="flex justify-between items-center pt-4 border-t border-neutral-900 mt-6">
                   <div className="flex gap-4">
-                    <button className="flex items-center gap-1 text-xs text-neutral-500 hover:text-rose-500 transition-all">
+                    <button className="flex items-center gap-1 text-xs text-neutral-500 hover:text-rose-500 transition-colors">
                       <Heart className="h-4 w-4" /> {trip.likes}
                     </button>
-                    <button className="flex items-center gap-1 text-xs text-neutral-500 hover:text-amber-500 transition-all">
+                    <button className="flex items-center gap-1 text-xs text-neutral-500 hover:text-amber-500 transition-colors">
                       <MessageSquare className="h-4 w-4" /> {trip.commentsCount}
                     </button>
                   </div>
-                  <button className="p-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white transition-all">
+                  <button className="p-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-rose-500 hover:border-rose-500/30 transition-all">
                     <Heart className="h-4 w-4" />
                   </button>
                 </div>
@@ -831,7 +893,7 @@ const LandingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-neutral-900 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/20 transition-all">
+            <div className="bg-neutral-900/60 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
               <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-500 mb-6">
                 <Sparkles className="h-6 w-6" />
               </div>
@@ -841,7 +903,7 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/20 transition-all">
+            <div className="bg-neutral-900/60 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
               <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-500 mb-6">
                 <Compass className="h-6 w-6" />
               </div>
@@ -851,7 +913,7 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/20 transition-all">
+            <div className="bg-neutral-900/60 border border-neutral-800/80 rounded-3xl p-8 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
               <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-500 mb-6">
                 <ShieldCheck className="h-6 w-6" />
               </div>
@@ -873,7 +935,7 @@ const LandingPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((test, index) => (
-            <div key={index} className="bg-neutral-900/30 border border-neutral-800/60 rounded-3xl p-8 flex flex-col justify-between">
+            <div key={index} className="bg-neutral-900/40 border border-neutral-800/60 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500/20 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
               <div>
                 <div className="flex gap-1 mb-5">
                   {[...Array(test.rating)].map((_, i) => (
@@ -904,13 +966,15 @@ const LandingPage = () => {
 
           <div className="space-y-4">
             {faqData.map((item, idx) => (
-              <div key={idx} className="bg-neutral-900 border border-neutral-800/80 rounded-2xl overflow-hidden transition-all">
+              <div key={idx} className={`bg-neutral-900/60 border border-neutral-800/80 rounded-2xl overflow-hidden transition-all duration-300 ${
+                activeFaq === idx ? "border-amber-500/30" : ""
+              }`}>
                 <button
                   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
                   className="w-full px-6 py-5 flex justify-between items-center text-left text-white font-bold text-sm md:text-base cursor-pointer hover:bg-neutral-800/40 transition-all"
                 >
                   <span>{item.q}</span>
-                  <ChevronDown className={`h-5 w-5 text-gray-400 transition-all duration-300 ${activeFaq === idx ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`h-5 w-5 text-gray-400 transition-all duration-300 ${activeFaq === idx ? "rotate-180 text-amber-500" : ""}`} />
                 </button>
                 <AnimatePresence>
                   {activeFaq === idx && (

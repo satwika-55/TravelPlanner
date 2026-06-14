@@ -61,7 +61,6 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/", icon: Home },
-    { name: "Explore", path: "/explore", icon: Compass },
     { name: "Community", path: "/community", icon: Users },
     { name: "Saved Trips", path: "/saved-trips", icon: Heart },
     { name: "My Trips", path: "/my-trips", icon: Map },

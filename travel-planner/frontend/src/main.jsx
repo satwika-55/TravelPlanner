@@ -11,7 +11,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { View } from 'lucide-react'
 import Viewtrip from './view-trip/[tripId]/index.jsx'
 import MyTrips from './pages/MyTrips.jsx'
-import Explore from './pages/Explore.jsx'
 import Community from './pages/Community.jsx'
 import SavedTrips from './pages/SavedTrips.jsx'
 import About from './pages/About.jsx'
@@ -37,10 +36,6 @@ const router = createBrowserRouter([
       {
         path: '/my-trips',
         element: <MyTrips />
-      },
-      {
-        path: '/explore',
-        element: <Explore />
       },
       {
         path: '/community',
