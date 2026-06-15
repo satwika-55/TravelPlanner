@@ -1,9 +1,7 @@
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-// import { Toaster } from "@/components/ui/sonner.jsx";
-import { AI_PROMT,selectBudgetOption, SelectTravelList } from "../constants/options";
-import { Toaster } from '../components/ui/sonner.jsx'
-import { chatSession } from "../service/AImodal";
+import { selectBudgetOption, SelectTravelList } from "../constants/options";
+import { toast } from 'sonner';
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -14,9 +12,8 @@ import {
 import { LogIn } from "lucide-react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../service/firebaseconfig";
 import { useNavigate } from "react-router-dom";
+import { generateTrip } from "../services/api.js";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState("");
@@ -49,43 +46,37 @@ const CreateTrip = () => {
       setOpendailog(true);
       return;
     }
-    else{
-      console.log("user", user);
-    }
+
     if (
-      formdata?.days > 15 &&
+      formdata?.days > 15 ||
       !formdata?.location ||
       !formdata?.budget ||
-      !formdata.traveler
+      !formdata?.traveler
     ) {
       toast("Please fill all details");
       return;
     }
-    setLoading(true);
-    const FINAL_PROMT = AI_PROMT
-      .replace("{location}", formdata?.location)
-      .replace("{days}", formdata?.days)
-      .replace("{traveler}", formdata?.traveler)
-      .replace("{budget}", formdata?.budget);
 
-    const result = await chatSession.sendMessage(FINAL_PROMT);
-    // console.log(result?.response?.text());
-    setLoading(false);
-    Saveaitrip(result?.response?.text());
-  };
-
-  const Saveaitrip = async (tripdata) => {
     setLoading(true);
-    const user = JSON.parse(localStorage.getItem("user"));
-    const docid = Date.now().toString();
-    await setDoc(doc(db, "travel-plan", docid), {
-      userselection: formdata,
-      tripdata: JSON.parse(tripdata),
-      userEmail: user?.email,
-      id: docid,
-    });
-    setLoading(false);
-    navigate('/view-trip/'+docid);
+    try {
+      const userData = JSON.parse(user);
+      const response = await generateTrip({
+        location: formdata.location,
+        days: formdata.days,
+        budget: formdata.budget,
+        traveler: formdata.traveler,
+        userEmail: userData.email,
+      });
+
+      if (response.success) {
+        navigate(`/view-trip/${response.tripId}`);
+      }
+    } catch (error) {
+      console.error("Error generating trip:", error);
+      toast("Failed to generate trip. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const GetuserProfile = (tokeninfo) => {

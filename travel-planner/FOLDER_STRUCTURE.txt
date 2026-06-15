@@ -1,0 +1,203 @@
+========================================
+TRAVEL PLANNER - FOLDER STRUCTURE SUMMARY
+========================================
+
+PROJECT ROOT: travel-planner/
+
+📦 BACKEND
+├── server.js                    [Express server entry point]
+├── package.json                 [Backend dependencies]
+├── .env.example                 [Environment variable template]
+│
+├── config/
+│   └── firebaseAdmin.js         [Firebase Admin SDK config for backend]
+│
+├── controllers/
+│   └── tripController.js        [Trip business logic - Generate, Get, Save, etc.]
+│
+├── services/
+│   └── geminiService.js         [Google Gemini API wrapper for AI]
+│
+├── routes/
+│   └── tripRoutes.js            [API endpoint routes - POST/GET trips]
+│
+├── middleware/                  [Placeholder for auth, error handling, etc.]
+└── utils/                       [Placeholder for helper functions]
+
+
+📱 FRONTEND
+├── src/
+│   ├── main.jsx                 [React Router setup + app entry]
+│   ├── App.jsx                  [Root component (minimal)]
+│   ├── index.css                [Global styles]
+│   ├── App.css                  [App-specific styles]
+│   │
+│   ├── pages/                   [Page components - one per file]
+│   │   ├── Home.jsx             [Landing page with carousel]
+│   │   ├── CreateTrip.jsx       [Trip form page]
+│   │   ├── ViewTrip.jsx         [Trip details display]
+│   │   │   └── components/
+│   │   │       ├── Hotels.jsx
+│   │   │       ├── InfoSection.jsx
+│   │   │       └── PlacetoVisits.jsx
+│   │   ├── Community.jsx        [Community feed (social media style)]
+│   │   ├── MyTrips.jsx          [User's created trips]
+│   │   ├── SavedTrips.jsx       [User's saved trips]
+│   │   └── About.jsx            [About page]
+│   │
+│   ├── layouts/
+│   │   └── RootLayout.jsx       [Main layout with Header + Footer]
+│   │
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Header.jsx       [Navigation bar]
+│   │   │   └── Footer.jsx       [Footer component]
+│   │   │
+│   │   └── ui/                  [Reusable Shadcn UI components]
+│   │       ├── button.jsx
+│   │       ├── dialog.jsx
+│   │       ├── input.jsx
+│   │       ├── popover.jsx
+│   │       └── sonner.jsx
+│   │
+│   ├── services/
+│   │   ├── api.js               [Frontend API client - calls backend]
+│   │   ├── GlobalApi.jsx        [Geoapify place suggestions]
+│   │   └── firebaseConfig.jsx   [Firebase client config]
+│   │
+│   ├── constants/
+│   │   └── options.jsx          [Static data - budgets, traveler types, prompts]
+│   │
+│   ├── lib/
+│   │   └── utils.js             [Utility functions]
+│   │
+│   ├── assets/                  [Images, logos, static files]
+│   │
+│   ├── index.html               [HTML entry point]
+│   ├── vite.config.js           [Vite build config]
+│   ├── jsconfig.json            [JS config]
+│   ├── components.json          [Shadcn UI config]
+│   ├── package.json             [Frontend dependencies]
+│   ├── .env.example             [Environment variable template]
+│   └── .gitignore               [Git ignore patterns]
+│
+├── public/                      [Static assets served as-is]
+└── node_modules/                [Installed dependencies]
+
+
+📄 ROOT LEVEL FILES
+├── package.json                 [Root monorepo scripts]
+│   - npm run dev                [Start both frontend & backend]
+│   - npm run dev:frontend       [Start frontend only]
+│   - npm run dev:backend        [Start backend only]
+│   - npm run install-all        [Install all dependencies]
+│
+├── .gitignore                   [Global git ignore]
+├── PROJECT_STRUCTURE.md         [Detailed documentation of all files]
+└── SETUP.md                     [Installation and setup guide]
+
+
+========================================
+KEY API ENDPOINTS
+========================================
+
+POST /api/trips/generate
+→ Generate new trip with Gemini AI
+
+GET /api/trips/:tripId
+→ Fetch single trip by ID
+
+GET /api/trips/user/:userEmail
+→ Get all trips created by user
+
+GET /api/trips
+→ Get all trips (community feed, paginated)
+
+POST /api/trips/save
+→ Save trip to user's saved list
+
+GET /api/trips/saved/:userEmail
+→ Get user's saved trips
+
+
+========================================
+ENVIRONMENT VARIABLES NEEDED
+========================================
+
+BACKEND (.env)
+- PORT
+- NODE_ENV
+- VITE_GOOGLE_GEMINI_API_KEY
+- VITE_GEOAPIFY_API_KEY
+- FIREBASE_PROJECT_ID
+- FIREBASE_PRIVATE_KEY
+- FIREBASE_CLIENT_EMAIL
+
+FRONTEND (.env)
+- VITE_GOOGLE_AUTH_CLIENT_ID
+- VITE_GEOAPIFY_API_KEY
+- VITE_API_BASE_URL
+
+
+========================================
+QUICK COMMANDS
+========================================
+
+Install all:           npm run install-all
+Start both:            npm run dev
+Start frontend only:   npm run dev:frontend
+Start backend only:    npm run dev:backend
+Build frontend:        npm run build
+Preview build:         npm run preview
+
+
+========================================
+DATA FLOW SUMMARY
+========================================
+
+1. USER CREATES TRIP
+   Home → CreateTrip (fill form) → API call to backend →
+   Gemini generates itinerary → Saved to Firestore →
+   Redirect to ViewTrip
+
+2. USER VIEWS COMMUNITY FEED
+   Community page → Fetch all trips from backend →
+   Display as cards → Click card → View trip
+
+3. USER SAVES TRIP
+   ViewTrip page → Click save → API call to backend →
+   Saved to "saved-trips" collection → Navigate to SavedTrips
+
+4. USER VIEWS MY TRIPS
+   MyTrips page → Fetch trips by user email → Display list
+
+
+========================================
+WHAT'S NEW / CHANGED
+========================================
+
+✅ Backend folder created with Express server
+✅ API service layer created in frontend (/services/api.js)
+✅ Pages reorganized to /pages folder (clean structure)
+✅ Removed redundant code (create-trip, view-trip folders deleted)
+✅ All imports updated to use new paths
+✅ Environment variable examples added
+✅ Root package.json updated with dev scripts
+✅ Firebase config moved to backend (security)
+✅ Gemini API calls moved to backend (security)
+✅ Complete documentation generated
+
+
+========================================
+READY FOR INTERVIEWS!
+========================================
+
+You now have an industry-standard project structure with:
+- Clear separation of concerns (frontend/backend)
+- Modular components and services
+- Proper routing and state management
+- Security best practices (API keys in backend)
+- Well-organized file system
+- Complete documentation
+
+Perfect for interview preparation! 🎉
