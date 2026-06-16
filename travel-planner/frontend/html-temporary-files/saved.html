@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyara | Saved Trips</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .page-header {
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 3rem;
+      background: var(--color-surface);
+    }
+    .page-header h1 { margin-bottom: 0.5rem; }
+    .page-header p { color: var(--color-text-muted); font-size: 1.1rem; }
+    
+    .saved-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      margin-bottom: 5rem;
+    }
+    @media (max-width: 1024px) { .saved-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+    @media (max-width: 640px) { .saved-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-name">Voyara</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="community.html" class="nav-link">Explore</a>
+        <a href="saved.html" class="nav-link active">Saved</a>
+        <a href="login.html" class="nav-link">Sign In</a>
+        <a href="generate.html" class="btn btn-primary">Plan a Trip</a>
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header fade-in-up">
+      <div class="container">
+        <h1>Saved Trips</h1>
+        <p>Your curated collection of dream destinations and upcoming adventures.</p>
+      </div>
+    </div>
+
+    <div class="container" style="min-height: 50vh;">
+      
+      <!-- We can simulate an empty state or show a few saved cards. Let's show empty state to demonstrate the design. -->
+      <div class="empty-state fade-in-up delay-100">
+        <i data-lucide="bookmark" class="empty-icon"></i>
+        <h3>No saved trips yet</h3>
+        <p>Explore the community and save itineraries that inspire your next journey.</p>
+        <a href="community.html" class="btn btn-primary">Browse Trips</a>
+      </div>
+
+      <!-- If they had saved trips, it would look like this:
+      <div class="filter-bar">
+        <button class="filter-chip active">All Saved</button>
+        <button class="filter-chip">Upcoming</button>
+        <button class="filter-chip">Dream Destinations</button>
+      </div>
+      <div class="saved-grid">
+         ... trip cards go here ...
+      </div>
+      -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Voyara</span>
+        <p>AI-powered travel planning with community-driven itineraries.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="community.html">Community Trips</a>
+        <a href="generate.html">Plan a Trip</a>
+        <a href="saved.html">Saved Trips</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Stay Updated</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Voyara. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      toggle.innerHTML = next === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+      lucide.createIcons();
+    });
+
+    // Scroll Reveal Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

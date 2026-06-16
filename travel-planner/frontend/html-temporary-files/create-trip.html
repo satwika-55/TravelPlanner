@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyara | Plan a Trip</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .generate-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: calc(100vh - 73px);
+    }
+    @media (max-width: 900px) {
+      .generate-layout { grid-template-columns: 1fr; }
+      .generate-image { display: none; }
+    }
+    .generate-form-container {
+      padding: 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    @media (max-width: 600px) {
+      .generate-form-container { padding: 2rem; }
+    }
+    .generate-image {
+      background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: background-image 0.6s ease-in-out;
+    }
+    .generate-header { margin-bottom: 3rem; }
+    .generate-header p { color: var(--color-text-muted); font-size: 1.1rem; }
+    
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+
+    /* Custom Selection Chips for form */
+    .selection-chips {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .selection-chip {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      color: var(--color-text-muted);
+      font-size: 0.9rem; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .selection-chip.selected {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+    .selection-chip:hover:not(.selected) {
+      background: var(--color-surface-alt);
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-name">Voyara</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="community.html" class="nav-link">Explore</a>
+        <a href="saved.html" class="nav-link">Saved</a>
+        <a href="login.html" class="nav-link">Sign In</a>
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="generate-layout">
+    <div class="generate-form-container fade-in-up">
+      <div class="generate-header">
+        <h1>Design Your Journey</h1>
+        <p>Tell us what you're looking for, and our AI will craft the perfect itinerary.</p>
+      </div>
+
+      <form>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Destination</label>
+            <input type="text" id="destination-input" class="form-input" placeholder="e.g. Kyoto, Japan or 'Anywhere warm'" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Duration (Days)</label>
+            <input type="number" class="form-input" placeholder="e.g. 7" min="1" max="30" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Who is traveling?</label>
+          <div class="selection-chips">
+            <div class="selection-chip selected">Solo</div>
+            <div class="selection-chip">Couple</div>
+            <div class="selection-chip">Family</div>
+            <div class="selection-chip">Friends</div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Travel Style (Select up to 3)</label>
+          <div class="selection-chips">
+            <div class="selection-chip selected">Adventure</div>
+            <div class="selection-chip">Relaxation</div>
+            <div class="selection-chip selected">Cultural</div>
+            <div class="selection-chip">Food & Wine</div>
+            <div class="selection-chip">Nature</div>
+            <div class="selection-chip">Nightlife</div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Budget Range</label>
+          <select class="form-select">
+            <option>Budget-friendly</option>
+            <option selected>Standard</option>
+            <option>Premium / Luxury</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Additional Notes (Optional)</label>
+          <textarea class="form-textarea" placeholder="e.g. I prefer boutique hotels, no early morning flights, must visit local markets..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem; margin-top: 1rem;">
+          Generate My Itinerary <i data-lucide="sparkles"></i>
+        </button>
+      </form>
+    </div>
+    
+    <div id="dynamic-image" class="generate-image"></div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      toggle.innerHTML = next === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+      lucide.createIcons();
+    });
+
+    // Simple chip toggle logic for demo
+    document.querySelectorAll('.selection-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        // If it's the "Who is traveling" row (single select)
+        if(this.parentElement.children.length === 4) {
+          Array.from(this.parentElement.children).forEach(c => c.classList.remove('selected'));
+          this.classList.add('selected');
+        } else {
+          // Multi select
+          this.classList.toggle('selected');
+        }
+      });
+    });
+
+    // Dynamic Image Loading for ALL Destinations (via Wikipedia API)
+    const destinationInput = document.getElementById('destination-input');
+    const dynamicImage = document.getElementById('dynamic-image');
+    
+    // Fallback image if the place isn't found
+    const defaultImage = 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
+
+    let debounceTimer;
+    destinationInput.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      const val = e.target.value.trim();
+      
+      if (!val) {
+        dynamicImage.style.backgroundImage = `url('${defaultImage}')`;
+        return;
+      }
+
+      debounceTimer = setTimeout(async () => {
+        try {
+          // Extract just the city name (e.g., "Kyoto, Japan" -> "Kyoto")
+          let query = val.split(',')[0].trim();
+          
+          // Format for Wikipedia (capitalize first letters and use underscores)
+          const title = query.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('_');
+          
+          const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`);
+          
+          if (response.ok) {
+            const data = await response.json();
+            // If Wikipedia has a main image for this place, use it!
+            if (data.originalimage && data.originalimage.source) {
+              dynamicImage.style.backgroundImage = `url('${data.originalimage.source}')`;
+              return;
+            }
+          }
+        } catch (err) {
+          console.error("Could not fetch image:", err);
+        }
+      }, 700); // 700ms delay so it doesn't fire while you're still typing
+    });
+
+    // Scroll Reveal Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

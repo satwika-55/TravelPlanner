@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyara | Plan Your Next Adventure</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    /* Homepage Specific Styles */
+    .hero {
+      position: relative;
+      min-height: min(85vh, 700px);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff; overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 800px; padding: 2rem;
+    }
+    .hero-content h1 { color: #fff; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 250px;
+      gap: 1.5rem;
+    }
+    .dest-card {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+    }
+    .dest-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .dest-card:hover img { transform: scale(1.04); }
+    .dest-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #fff;
+    }
+    .dest-overlay h3 { font-size: 1.4rem; margin-bottom: 0.25rem; color: #fff; }
+    .dest-overlay span { font-family: var(--font-body); font-size: 0.85rem; opacity: 0.85; }
+    
+    .dest-card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .dest-card:nth-child(4) { grid-column: span 2; }
+
+    @media (max-width: 1024px) {
+      .destinations-grid { grid-template-columns: repeat(3, 1fr); }
+      .dest-card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .dest-card:nth-child(4) { grid-column: span 1; }
+    }
+    @media (max-width: 768px) {
+      .destinations-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+      .dest-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .dest-card:nth-child(4) { grid-column: span 2; }
+    }
+
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 3rem; text-align: center;
+    }
+    .step-icon {
+      width: 64px; height: 64px; margin: 0 auto 1.25rem;
+      display: grid; place-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .community-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 900px) { .community-preview { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .community-preview { grid-template-columns: 1fr; } }
+    
+    .view-all-row { text-align: center; margin-top: 3rem; }
+
+    .cta-banner {
+      background: var(--color-primary);
+      color: #fff; text-align: center;
+      padding: 5rem 2rem; border-radius: var(--radius-xl);
+      margin: 4rem 0;
+    }
+    .cta-banner h2 { color: #fff; margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-name">Voyara</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="community.html" class="nav-link">Explore</a>
+        <a href="saved.html" class="nav-link">Saved</a>
+        <a href="login.html" class="nav-link">Sign In</a>
+        <a href="generate.html" class="btn btn-primary">Plan a Trip</a>
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1920&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-surfing-through-the-ocean-waves-4264/1080p/mp4/file.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content fade-in-up">
+        <h1>Discover Places That Move You</h1>
+        <p>Plan trips with AI. Get inspired by real travelers. Go anywhere.</p>
+        <a href="generate.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 1rem 2rem;">Start Planning <i data-lucide="arrow-right" style="width:18px;"></i></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <h2>Popular Destinations</h2>
+          <p>Explore the most breathtaking locations currently trending among Voyara travelers.</p>
+        </div>
+        <div class="destinations-grid">
+          <div class="dest-card fade-in-up">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Kyoto, Japan</h3><span>from $1,200</span>
+            </div>
+          </div>
+          <div class="dest-card fade-in-up delay-100">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80" alt="Route 66" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Road Trips</h3><span>from $400</span>
+            </div>
+          </div>
+          <div class="dest-card fade-in-up delay-200">
+            <img src="https://images.unsplash.com/photo-1525159226136-242fae18f620?w=600&q=80" alt="Safari" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Serengeti</h3><span>from $2,500</span>
+            </div>
+          </div>
+          <div class="dest-card fade-in-up delay-300">
+            <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80" alt="Alps" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Swiss Alps</h3><span>from $1,800</span>
+            </div>
+          </div>
+          <div class="dest-card fade-in-up delay-100">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dafaf0092e?w=600&q=80" alt="Cinque Terre" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Cinque Terre</h3><span>from $1,400</span>
+            </div>
+          </div>
+          <div class="dest-card fade-in-up delay-200">
+            <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=600&q=80" alt="Bali" loading="lazy" />
+            <div class="dest-overlay">
+              <h3>Bali</h3><span>from $900</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface-alt);">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <h2>How It Works</h2>
+          <p>Your next journey is just a few clicks away. Here is how Voyara makes travel planning effortless.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step fade-in-up">
+            <div class="step-icon"><i data-lucide="map-pin"></i></div>
+            <h3>1. Choose a Destination</h3>
+            <p>Pick any place on Earth. Or let us surprise you with trending spots based on your style.</p>
+          </div>
+          <div class="step fade-in-up delay-100">
+            <div class="step-icon"><i data-lucide="sparkles"></i></div>
+            <h3>2. AI Crafts Your Itinerary</h3>
+            <p>Our intelligent engine builds a personalized day-by-day plan tailored to your budget and pace.</p>
+          </div>
+          <div class="step fade-in-up delay-200">
+            <div class="step-icon"><i data-lucide="users"></i></div>
+            <h3>3. Share & Explore</h3>
+            <p>Publish your trips to the community, discover hidden gems, and save ideas for the future.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <h2>Wanderlust Gallery</h2>
+          <p>Get lost in moments captured around the globe.</p>
+        </div>
+        
+        <div class="masonry-gallery">
+          <div class="masonry-item fade-in-up">
+            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80" alt="Beach" loading="lazy">
+            <div class="masonry-overlay"><h3>Maldives</h3></div>
+          </div>
+          <div class="masonry-item fade-in-up delay-100">
+            <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=600&q=80" alt="Mountain" loading="lazy">
+            <div class="masonry-overlay"><h3>Patagonia</h3></div>
+          </div>
+          <div class="masonry-item fade-in-up delay-200">
+            <img src="https://images.unsplash.com/photo-1513635269975-59693e0cd8ce?w=600&q=80" alt="City" loading="lazy">
+            <div class="masonry-overlay"><h3>London</h3></div>
+          </div>
+          <div class="masonry-item fade-in-up">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&q=80" alt="New York" loading="lazy">
+            <div class="masonry-overlay"><h3>New York City</h3></div>
+          </div>
+          <div class="masonry-item fade-in-up delay-100">
+            <img src="https://images.unsplash.com/photo-1533050487297-09b450131914?w=600&q=80" alt="Temple" loading="lazy">
+            <div class="masonry-overlay"><h3>Angkor Wat</h3></div>
+          </div>
+          <div class="masonry-item fade-in-up delay-200">
+            <img src="https://images.unsplash.com/photo-1502602861254-8c7c917036fb?w=600&q=80" alt="Paris" loading="lazy">
+            <div class="masonry-overlay"><h3>Paris</h3></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface-alt);">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <h2>Trending in the Community</h2>
+          <p>See what others are planning and get inspired for your next getaway.</p>
+        </div>
+        <div class="community-preview">
+          <!-- Card 1 -->
+          <article class="trip-card fade-in-up">
+            <img class="trip-card-img" src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" alt="Lisbon" loading="lazy">
+            <div class="trip-card-body">
+              <h3 class="trip-card-title">Lisbon streets, Pastéis de Nata, and sunset views</h3>
+              <div class="trip-card-meta">
+                <span>@maria_travels</span><span>•</span><span>€650</span><span>•</span><span>4 days</span>
+              </div>
+              <div class="trip-card-footer">
+                <button class="action-pill"><i data-lucide="heart"></i> 1.2k</button>
+                <button class="action-pill"><i data-lucide="message-circle"></i> 48</button>
+                <button class="action-pill" style="margin-left: auto;"><i data-lucide="bookmark"></i></button>
+              </div>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="trip-card fade-in-up delay-100">
+            <img class="trip-card-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Swiss Lakes" loading="lazy">
+            <div class="trip-card-body">
+              <h3 class="trip-card-title">Alpine lakes, hiking trails, and slow train rides</h3>
+              <div class="trip-card-meta">
+                <span>@alex_hikes</span><span>•</span><span>$1.2k</span><span>•</span><span>7 days</span>
+              </div>
+              <div class="trip-card-footer">
+                <button class="action-pill"><i data-lucide="heart"></i> 843</button>
+                <button class="action-pill"><i data-lucide="message-circle"></i> 22</button>
+                <button class="action-pill" style="margin-left: auto;"><i data-lucide="bookmark"></i></button>
+              </div>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article class="trip-card fade-in-up delay-200">
+            <img class="trip-card-img" src="https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=600&q=80" alt="Tokyo" loading="lazy">
+            <div class="trip-card-body">
+              <h3 class="trip-card-title">Tokyo neon lights, hidden ramen spots, and temples</h3>
+              <div class="trip-card-meta">
+                <span>@kenji_jp</span><span>•</span><span>¥120k</span><span>•</span><span>5 days</span>
+              </div>
+              <div class="trip-card-footer">
+                <button class="action-pill"><i data-lucide="heart"></i> 2.1k</button>
+                <button class="action-pill"><i data-lucide="message-circle"></i> 115</button>
+                <button class="action-pill" style="margin-left: auto;"><i data-lucide="bookmark"></i></button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="view-all-row fade-in-up">
+          <a href="community.html" class="btn btn-secondary">View All Trips <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="cta-banner fade-in-up">
+        <h2>Ready to plan your next adventure?</h2>
+        <a href="generate.html" class="btn btn-outline-white" style="font-size: 1rem; padding: 0.85rem 1.75rem;">Get Started Free</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Voyara</span>
+        <p>AI-powered travel planning with community-driven itineraries.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="community.html">Community Trips</a>
+        <a href="generate.html">Plan a Trip</a>
+        <a href="saved.html">Saved Trips</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Stay Updated</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Voyara. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      toggle.innerHTML = next === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+      lucide.createIcons();
+    });
+
+    // Scroll Reveal Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Optional: stop observing once revealed
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
